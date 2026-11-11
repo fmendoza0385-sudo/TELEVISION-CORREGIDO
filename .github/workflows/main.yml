@@ -12,30 +12,29 @@ permissions:
 jobs:
   build:
     name: Compilar APK Android
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
 
     steps:
       - name: Descargar código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Configurar Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: '17'
-          cache: gradle
 
       - name: Configurar Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
 
       - name: Instalar plataforma y herramientas Android
         run: |
-          sdkmanager --install "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+          sdkmanager --install "platforms;android-34" "build-tools;34.0.0"
           yes | sdkmanager --licenses
 
-      - name: Preparar Gradle
-        uses: gradle/actions/setup-gradle@v4
+      - name: Configurar Gradle y caché
+        uses: gradle/actions/setup-gradle@v6
 
       - name: Dar permisos al Gradle Wrapper
         run: chmod +x ./gradlew
@@ -54,31 +53,28 @@ jobs:
         run: |
           APK_PATH="$(find app/build/outputs/apk/debug -maxdepth 1 -type f -name '*.apk' -print -quit)"
           if [ -z "$APK_PATH" ]; then
-            echo "No se encontró el APK de depuración."
+            echo "ERROR: No se encontró el APK de depuración."
             exit 1
           fi
 
           echo "path=$APK_PATH" >> "$GITHUB_OUTPUT"
-          echo "name=$(basename "$APK_PATH")" >> "$GITHUB_OUTPUT"
 
           {
             echo "## LUKKA Televisión - Compilación correcta"
             echo ""
-            echo "- APK: \`$(basename "$APK_PATH")\`"
-            echo "- Tamaño: \`$(du -h "$APK_PATH" | cut -f1)\`"
-            echo "- Commit: \`${GITHUB_SHA::7}\`"
+            echo "- APK: $(basename "$APK_PATH")"
+            echo "- Tamaño: $(du -h "$APK_PATH" | cut -f1)"
+            echo "- Commit: ${GITHUB_SHA::7}"
             if [ -n "$LUKKA_LICENSE_API_URL" ]; then
               echo "- API de licencias: configurada"
             else
               echo "- API de licencias: no configurada"
             fi
           } >> "$GITHUB_STEP_SUMMARY"
-        env:
-          LUKKA_LICENSE_API_URL: ${{ vars.LUKKA_LICENSE_API_URL }}
 
       - name: Publicar APK como artefacto
         if: success()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: LUKKA-Television-debug-apk
           path: ${{ steps.apk.outputs.path }}
@@ -87,7 +83,7 @@ jobs:
 
       - name: Publicar reportes de pruebas
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: LUKKA-Television-reportes-pruebas
           path: app/build/reports/tests/
