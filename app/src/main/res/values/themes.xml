@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Estilo base requerido por los estilos Lukka.Text.* -->
-    <style name="Lukka.Text">
-        <item name="android:textColor">@color/lukka_white</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-    <style name="Lukka" parent="Theme.Lukka" />
+    <!-- Tema principal de LUKKA -->
+    <style name="Lukka" parent="Theme.Lukka">
         <item name="android:windowBackground">@color/lukka_black</item>
         <item name="android:statusBarColor">@color/lukka_black</item>
         <item name="android:navigationBarColor">@color/lukka_black</item>
         <item name="android:textColorPrimary">@color/lukka_white</item>
         <item name="android:textColor">@color/lukka_white</item>
         <item name="colorAccent">@color/lukka_blue_light</item>
+    </style>
+
+    <style name="Lukka.Text">
+        <item name="android:textColor">@color/lukka_white</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="Lukka.Text.Brand">
