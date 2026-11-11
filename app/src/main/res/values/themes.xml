@@ -5,7 +5,7 @@
         <item name="android:textColor">@color/lukka_white</item>
         <item name="android:textSize">18sp</item>
     </style>
-    <style name="Theme.Lukka" parent="Theme.AppCompat.NoActionBar">
+    <style name="Lukka" parent="Theme.Lukka" />
         <item name="android:windowBackground">@color/lukka_black</item>
         <item name="android:statusBarColor">@color/lukka_black</item>
         <item name="android:navigationBarColor">@color/lukka_black</item>
