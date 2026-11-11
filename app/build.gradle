@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+// Las propiedades de Gradle (-P / gradle.properties) tienen prioridad; si no, variables de entorno.
+def cfg = { String name ->
+    def fromEnv = System.getenv(name)
+    def fromProp = project.findProperty(name)
+    def value = (fromEnv != null && !fromEnv.isEmpty()) ? fromEnv : (fromProp ?: "")
+    return value.toString().replace('"', '')
+}
+
+android {
+    namespace 'com.grmconexion.lukka'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.grmconexion.lukka'
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0-fase1'
+
+        buildConfigField 'String', 'LICENSE_API_URL', ('"' + cfg('LUKKA_LICENSE_API_URL') + '"').toString()
+        buildConfigField 'String', 'LICENSE_PUBLIC_KEY', ('"' + cfg('LUKKA_LICENSE_PUBLIC_KEY') + '"').toString()
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+
+    def media3 = '1.2.1'
+    implementation "androidx.media3:media3-exoplayer:$media3"
+    implementation "androidx.media3:media3-exoplayer-hls:$media3"
+    implementation "androidx.media3:media3-ui:$media3"
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20231013'
+}

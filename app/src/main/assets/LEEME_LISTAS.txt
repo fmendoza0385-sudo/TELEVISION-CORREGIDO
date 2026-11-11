@@ -1,0 +1,13 @@
+LISTAS DE CANALES POR PLAN
+==========================
+Coloca aquí las listas M3U que GRM CONEXIÓN SAS tenga autorización de distribuir:
+
+  m3u_plan_50.m3u    -> PLAN-50  (50 canales)
+  m3u_plan_80.m3u    -> PLAN-80  (80 canales)
+  m3u_plan_120.m3u   -> PLAN-120 (120 canales)
+
+La app elige la lista según el plan que autoriza el código de activación.
+Si falta una lista, la app muestra "No hay lista de canales para tu plan" (no se cierra).
+
+ATENCIÓN: si tus listas contienen usuario/clave o tokens privados en las URL, NO las subas a un
+repositorio público de GitHub (cualquiera podría extraerlas del APK). Usa un repositorio PRIVADO.

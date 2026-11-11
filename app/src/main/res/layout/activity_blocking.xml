@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lukka_black"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:minHeight="360dp"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            style="@style/Lukka.Text.Brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/brand" />
+
+        <TextView
+            style="@style/Lukka.Text.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/suspended_title" />
+
+        <TextView
+            style="@style/Lukka.Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/suspended_body" />
+
+        <TextView
+            style="@style/Lukka.Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="@string/suspended_how_title"
+            android:textColor="@color/lukka_blue_light"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/Lukka.Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/suspended_how_body" />
+
+        <TextView
+            android:id="@+id/tv_support"
+            style="@style/Lukka.Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_activate"
+            style="@style/Lukka.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/btn_activate"
+            android:text="@string/btn_activate" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/footer"
+            android:textColor="@color/lukka_gray"
+            android:textSize="16sp" />
+    </LinearLayout>
+</ScrollView>

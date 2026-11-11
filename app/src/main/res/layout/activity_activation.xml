@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lukka_black"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:minHeight="360dp"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            style="@style/Lukka.Text.Brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/brand" />
+
+        <TextView
+            style="@style/Lukka.Text.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/activation_title" />
+
+        <TextView
+            style="@style/Lukka.Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/activation_help" />
+
+        <EditText
+            android:id="@+id/et_user_id"
+            style="@style/Lukka.Input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:autofillHints="username"
+            android:contentDescription="@string/hint_user_id"
+            android:hint="@string/hint_user_id"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="20"
+            android:nextFocusDown="@id/et_code" />
+
+        <EditText
+            android:id="@+id/et_code"
+            style="@style/Lukka.Input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/hint_code"
+            android:hint="@string/hint_code"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="16"
+            android:nextFocusDown="@id/btn_validate" />
+
+        <TextView
+            android:id="@+id/tv_message"
+            style="@style/Lukka.Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textColor="@color/lukka_error"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/validating"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_validate"
+            style="@style/Lukka.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/btn_validate"
+            android:nextFocusDown="@id/btn_back"
+            android:text="@string/btn_validate" />
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/Lukka.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/btn_back"
+            android:text="@string/btn_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/footer"
+            android:textColor="@color/lukka_gray"
+            android:textSize="16sp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BANNER PROVISIONAL para Android TV (320x180). Reemplazar por el arte oficial de LUKKA Televisión. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <path android:fillColor="#000000" android:pathData="M0,0h320v180h-320z" />
+    <path android:fillColor="#1F5FAE" android:pathData="M0,150h320v30h-320z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M138,45L192,80L138,115z" />
+</vector>

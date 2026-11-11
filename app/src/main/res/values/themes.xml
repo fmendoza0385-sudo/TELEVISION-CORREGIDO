@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo base requerido por los estilos Lukka.Text.* -->
+    <style name="Lukka.Text">
+        <item name="android:textColor">@color/lukka_white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="Theme.Lukka" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/lukka_black</item>
+        <item name="android:statusBarColor">@color/lukka_black</item>
+        <item name="android:navigationBarColor">@color/lukka_black</item>
+        <item name="android:textColorPrimary">@color/lukka_white</item>
+        <item name="android:textColor">@color/lukka_white</item>
+        <item name="colorAccent">@color/lukka_blue_light</item>
+    </style>
+
+    <style name="Lukka.Text.Brand">
+        <item name="android:textColor">@color/lukka_blue_light</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.12</item>
+    </style>
+
+    <style name="Lukka.Text.Title">
+        <item name="android:textColor">@color/lukka_white</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Lukka.Text.Body">
+        <item name="android:textColor">@color/lukka_white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="Lukka.Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:textColor">@color/lukka_white</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:minWidth">280dp</item>
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingRight">32dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Lukka.Input" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:textColor">@color/lukka_white</item>
+        <item name="android:textColorHint">@color/lukka_gray</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+</resources>

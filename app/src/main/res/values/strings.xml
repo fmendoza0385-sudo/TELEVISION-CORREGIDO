@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LUKKA Televisión</string>
+    <string name="brand">LUKKA TELEVISIÓN</string>
+
+    <!-- Pantalla de servicio suspendido (texto aprobado, editable sin tocar la lógica) -->
+    <string name="suspended_title">SERVICIO SUSPENDIDO</string>
+    <string name="suspended_body">Tu suscripción se encuentra vencida.\n\nPara continuar disfrutando de tu televisión, necesitas renovar tu código de activación mensual.</string>
+    <string name="suspended_how_title">¿CÓMO RECUPERAR TU SERVICIO?</string>
+    <string name="suspended_how_body">Comunícate con tu proveedor y solicita tu nuevo código mensual.</string>
+    <!-- Canal de soporte (teléfono/WhatsApp). VACÍO hasta que GRM CONEXIÓN SAS lo suministre: no se inventa. -->
+    <string name="support_contact"></string>
+    <string name="btn_activate">ACTIVAR SERVICIO</string>
+    <string name="footer">LUKKA TELEVISIÓN · GRM CONEXIÓN SAS</string>
+
+    <!-- Activación -->
+    <string name="activation_title">ACTIVAR SERVICIO</string>
+    <string name="activation_help">Escribe tu ID de usuario y el código de 16 dígitos que te entregó tu proveedor.</string>
+    <string name="hint_user_id">ID de usuario</string>
+    <string name="hint_code">Código de activación (16 dígitos)</string>
+    <string name="btn_validate">VALIDAR CÓDIGO</string>
+    <string name="btn_back">VOLVER</string>
+    <string name="validating">Validando…</string>
+
+    <!-- Errores (visibles y fáciles de entender) -->
+    <string name="err_user_format">Escribe tu ID de usuario (solo números).</string>
+    <string name="err_code_format">El código debe tener exactamente 16 números.</string>
+    <string name="err_user_not_found">Ese ID de usuario no existe. Revísalo o consulta con tu proveedor.</string>
+    <string name="err_code_invalid">El código no es correcto. Revísalo y vuelve a intentarlo.</string>
+    <string name="err_code_used">Este código ya fue utilizado.</string>
+    <string name="err_code_old">Este código corresponde a un mes anterior.</string>
+    <string name="err_device">Tu servicio está vinculado a otro equipo. Comunícate con tu proveedor.</string>
+    <string name="err_revoked">Tu servicio fue desactivado. Comunícate con tu proveedor.</string>
+    <string name="err_rate">Demasiados intentos. Espera unos minutos e inténtalo de nuevo.</string>
+    <string name="err_format">Los datos escritos no tienen el formato correcto.</string>
+    <string name="err_network">No hay conexión con el servidor. Revisa tu Internet e inténtalo de nuevo.</string>
+    <string name="err_server">El servicio de activación no está disponible en este momento. Inténtalo más tarde.</string>
+    <string name="err_bad_response">No se pudo verificar la respuesta del servidor. Inténtalo de nuevo.</string>
+    <string name="err_not_configured">El servicio de licencias aún no está configurado en esta versión de la aplicación.</string>
+
+    <!-- Reproductor -->
+    <string name="player_loading">Cargando canal…</string>
+    <string name="player_error">No se pudo reproducir este canal. Cambia de canal o inténtalo de nuevo.</string>
+    <string name="player_no_video">Este canal no tiene imagen disponible en este momento.</string>
+    <string name="player_video_unsupported">Este canal usa un formato de video que tu equipo no puede mostrar.</string>
+    <string name="player_no_playlist">No hay lista de canales para tu plan.</string>
+    <string name="player_notice_expiring">Tu servicio vence el %1$s. Solicita tu nuevo código.</string>
+</resources>

@@ -1,0 +1,36 @@
+{
+  "_AVISO": "ARCHIVO DE EJEMPLO CON DATOS FALSOS. El banco real (LUKKA_Banco_Codigos_Activacion_TEMPORAL.json) NO va en este repositorio.",
+  "schema": "lukka.subscription-code-bank",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-01-01T00:00:00+00:00",
+  "environment": "TEMPORARY_IMPORT_ONLY",
+  "timezone": "America/Bogota",
+  "subscription_policy": {
+    "monthly_cutoff": { "day": 5, "time": "12:00:00", "timezone": "America/Bogota" },
+    "grace_period": "NONE_PROPOSED_PENDING_CONFIRMATION",
+    "offline_policy": {
+      "retry_interval_seconds": 60,
+      "use_cached_validated_license": true,
+      "offline_access_must_not_extend_past_signed_license_expiration": true,
+      "block_at_cutoff_if_not_renewed": true
+    }
+  },
+  "plans": [
+    { "plan_id": "PLAN-50", "name": "50 canales", "channels": 50 },
+    { "plan_id": "PLAN-80", "name": "80 canales", "channels": 80 },
+    { "plan_id": "PLAN-120", "name": "120 canales", "channels": 120 }
+  ],
+  "summary": { "users": 1, "codes_per_user": 2, "total_codes": 2, "unique_code_count": 2, "user_id_start": "99999999", "user_id_end": "99999999" },
+  "users": [
+    {
+      "user_id": "99999999",
+      "plan_id": "PLAN-50",
+      "plan_name": "50 canales",
+      "monthly_codes": [
+        { "activation_code": "0000000000000001", "renewal_number": 1, "type": "MENSUAL", "status": "DISPONIBLE" },
+        { "activation_code": "0000000000000002", "renewal_number": 2, "type": "MENSUAL", "status": "DISPONIBLE" }
+      ]
+    }
+  ],
+  "security_notice": ["Ejemplo con datos falsos."]
+}
