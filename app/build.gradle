@@ -1,7 +1,19 @@
+import groovy.json.JsonSlurper
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+
+// Leer archivo JSON si existe (en la raíz del proyecto o dentro de app/)
+def configFile = rootProject.file("lukka-config.json")
+if (!configFile.exists()) {
+    configFile = file("lukka-config.json")
+}
+def configJson = configFile.exists() ? new JsonSlurper().parseText(configFile.text) : [:]
+
+def apiUrl = configJson.license_api_url ?: System.getenv("LICENSE_API_URL") ?: ""
+def publicKey = configJson.license_public_key ?: System.getenv("LICENSE_PUBLIC_KEY") ?: ""
 
 android {
     namespace 'com.grmconexion.lukka'
@@ -16,65 +28,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        // Campos requeridos por SubscriptionManager.kt
-        buildConfigField "String", "LICENSE_API_URL", "\"https://api.grmconexion.com/\""
-        buildConfigField "String", "LICENSE_PUBLIC_KEY", "\"\""
+        // Inyección automática desde tu JSON o desde GitHub Secrets
+        buildConfigField "String", "LICENSE_API_URL", "\"${apiUrl}\""
+        buildConfigField "String", "LICENSE_PUBLIC_KEY", "\"${publicKey}\""
 
-        // Soporte explícito para 32 bits (Samsung A03 Core) y 64 bits (TV Box / teléfonos modernos)
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
     }
-
-    buildFeatures {
-        buildConfig true
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = '17'
-    }
-}
-
-dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core-ktx:1.12.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.material:material:1.11.0'
-
-    // Criptografía / Almacenamiento seguro (por si ActivationRepository usa EncryptedSharedPreferences)
-    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
-
-    // Multimedia / IPTV (incluye soporte HLS .m3u8)
-    implementation 'androidx.media3:media3-exoplayer:1.2.0'
-    implementation 'androidx.media3:media3-exoplayer-hls:1.2.0'
-    implementation 'androidx.media3:media3-ui:1.2.0'
-
-    // Red / HTTP
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-}
-
-configurations.all {
-    resolutionStrategy {
-        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
-        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
-        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
-    }
-}
+    // ... resto de tu build.gradle igual
