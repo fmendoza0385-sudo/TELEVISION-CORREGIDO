@@ -4,17 +4,30 @@ plugins {
 }
 
 android {
-    namespace 'tu.paquete.app'
+    namespace 'com.grmconexion.lukka'
     compileSdk 34
 
     defaultConfig {
-        applicationId "tu.paquete.app"
+        applicationId "com.grmconexion.lukka"
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Campos requeridos por SubscriptionManager.kt
+        buildConfigField "String", "LICENSE_API_URL", "\"https://api.grmconexion.com/\""
+        buildConfigField "String", "LICENSE_PUBLIC_KEY", "\"\""
+
+        // Soporte explícito para 32 bits (Samsung A03 Core) y 64 bits (TV Box / teléfonos modernos)
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {
@@ -35,20 +48,33 @@ android {
 }
 
 dependencies {
-    // Librería estándar de AndroidX y Material
-    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.material:material:1.11.0'
 
-    // Gson para deserializar el banco de códigos JSON en assets
-    implementation 'com.google.code.gson:gson:2.10.1'
+    // Criptografía / Almacenamiento seguro (por si ActivationRepository usa EncryptedSharedPreferences)
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
 
-    // AndroidX Media3 (ExoPlayer) para corregir los atributos del reproductor multimedia
-    implementation 'androidx.media3:media3-exoplayer:1.3.1'
-    implementation 'androidx.media3:media3-ui:1.3.1'
+    // Multimedia / IPTV (incluye soporte HLS .m3u8)
+    implementation 'androidx.media3:media3-exoplayer:1.2.0'
+    implementation 'androidx.media3:media3-exoplayer-hls:1.2.0'
+    implementation 'androidx.media3:media3-ui:1.2.0'
 
-    // Testing
+    // Red / HTTP
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+    }
 }
