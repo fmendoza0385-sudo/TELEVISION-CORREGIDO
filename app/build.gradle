@@ -1,39 +1,43 @@
-import groovy.json.JsonSlurper
-
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
 
-// Leer archivo JSON si existe (en la raíz del proyecto o dentro de app/)
-def configFile = rootProject.file("lukka-config.json")
-if (!configFile.exists()) {
-    configFile = file("lukka-config.json")
-}
-def configJson = configFile.exists() ? new JsonSlurper().parseText(configFile.text) : [:]
-
-def apiUrl = configJson.license_api_url ?: System.getenv("LICENSE_API_URL") ?: ""
-def publicKey = configJson.license_public_key ?: System.getenv("LICENSE_PUBLIC_KEY") ?: ""
-
 android {
-    namespace 'com.grmconexion.lukka'
+    namespace 'tu.paquete.app'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.grmconexion.lukka"
+        applicationId "tu.paquete.app"
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
 
-        // Inyección automática desde tu JSON o desde GitHub Secrets
-        buildConfigField "String", "LICENSE_API_URL", "\"${apiUrl}\""
-        buildConfigField "String", "LICENSE_PUBLIC_KEY", "\"${publicKey}\""
-
-        ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    // ... resto de tu build.gradle igual
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    // ... tus demás dependencias
+}
