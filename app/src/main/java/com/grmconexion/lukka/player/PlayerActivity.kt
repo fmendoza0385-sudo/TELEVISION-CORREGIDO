@@ -19,6 +19,7 @@ import androidx.media3.common.Tracks
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.hls.DefaultHlsExtractorFactory
@@ -159,7 +160,15 @@ class PlayerActivity : AppCompatActivity() {
         val renderers = DefaultRenderersFactory(this)
             .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF)
             .setEnableDecoderFallback(true) // prueba otro decodificador si el primero falla
-        val exo = ExoPlayer.Builder(this, renderers).build()
+        // Buffer moderado para TV en vivo: reduce pausas por variaciones breves de red
+        // sin acumular varios minutos de retraso respecto a la señal en directo.
+        val loadControl = DefaultLoadControl.Builder()
+            .setBufferDurationsMs(15_000, 50_000, 1_500, 3_000)
+            .setPrioritizeTimeOverSizeThresholds(true)
+            .build()
+        val exo = ExoPlayer.Builder(this, renderers)
+            .setLoadControl(loadControl)
+            .build()
         exo.addListener(listener)
         playerView.player = exo
         player = exo

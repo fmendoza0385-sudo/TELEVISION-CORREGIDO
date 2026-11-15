@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="lukka_black">#000000</color>
-    <color name="lukka_white">#FFFFFF</color>
-    <color name="lukka_blue">#1F5FAE</color>
-    <color name="lukka_blue_light">#5B9BE0</color>
-    <color name="lukka_blue_dark">#123C70</color>
-    <color name="lukka_gray">#B8C2CC</color>
+    <color name="lukka_black">#050914</color>
+    <color name="lukka_white">#F7FAFF</color>
+    <color name="lukka_blue">#1769E0</color>
+    <color name="lukka_blue_light">#54B8FF</color>
+    <color name="lukka_blue_dark">#0B1C3A</color>
+    <color name="lukka_gray">#A8B6CA</color>
     <color name="lukka_error">#FF8A80</color>
-    <color name="lukka_panel">#CC000000</color>
+    <color name="lukka_panel">#E6101D32</color>
+    <color name="lukka_panel_solid">#101D33</color>
+    <color name="lukka_accent">#00D4FF</color>
+    <color name="lukka_live">#FF385C</color>
 </resources>

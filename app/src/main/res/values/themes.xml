@@ -3,7 +3,7 @@
     <!-- Tema principal de LUKKA (Hereda de MaterialComponents o AppCompat para evitar errores) -->
     <style name="Theme.Lukka" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@color/lukka_black</item>
-        <item name="android:statusBarColor">@color/lukka_black</item>
+        <item name="android:statusBarColor">@color/lukka_blue_dark</item>
         <item name="android:navigationBarColor">@color/lukka_black</item>
         <item name="android:textColorPrimary">@color/lukka_white</item>
         <item name="android:textColor">@color/lukka_white</item>

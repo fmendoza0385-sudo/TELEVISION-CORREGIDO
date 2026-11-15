@@ -16,34 +16,115 @@
         app:surface_type="surface_view"
         app:use_controller="false" />
 
-    <!-- OSD: número y nombre del canal -->
+    <!-- Identidad visual discreta, como la interfaz de un receptor de TV -->
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@drawable/bg_tv_topbar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="28dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="28dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LUKKA"
+            android:textColor="@color/lukka_white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.12" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/bg_live_dot" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:text="TELEVISIÓN EN VIVO"
+            android:textColor="@color/lukka_gray"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GRM CONEXIÓN"
+            android:textColor="@color/lukka_gray"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
+    </LinearLayout>
+
+    <!-- OSD de canal con jerarquía visual de decodificador -->
     <LinearLayout
         android:id="@+id/osd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|start"
-        android:layout_margin="24dp"
-        android:background="@color/lukka_panel"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="54dp"
+        android:background="@drawable/bg_tv_osd"
         android:gravity="center_vertical"
+        android:minWidth="300dp"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:paddingStart="20dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="16dp"
         android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_channel_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minWidth="54dp"
             android:textColor="@color/lukka_blue_light"
-            android:textSize="44sp"
+            android:textSize="38sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_channel_name"
+        <View
+            android:layout_width="1dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="#52647F" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textColor="@color/lukka_white"
-            android:textSize="26sp" />
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="REPRODUCIENDO AHORA"
+                android:textColor="@color/lukka_accent"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+            <TextView
+                android:id="@+id/tv_channel_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/lukka_white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
@@ -51,24 +132,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:layout_margin="24dp"
-        android:background="@color/lukka_panel"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_tv_osd"
         android:padding="12dp"
         android:textColor="@color/lukka_white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:visibility="gone" />
 
-    <!-- Mensajes de carga / error -->
+    <!-- Ayuda de control remoto: mantiene CH+ / CH- y selección numérica -->
+    <TextView
+        android:id="@+id/tv_remote_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/bg_tv_hint"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:text="CH + / −   CAMBIAR CANAL     ·     0–9   IR AL CANAL"
+        android:textColor="@color/lukka_gray"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/lukka_panel"
+        android:background="@drawable/bg_tv_osd"
         android:gravity="center"
         android:maxWidth="640dp"
-        android:padding="20dp"
+        android:padding="22dp"
         android:textColor="@color/lukka_white"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:visibility="gone" />
 </FrameLayout>

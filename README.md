@@ -39,3 +39,10 @@ Sin esas variables el APK compila igual, pero al activar mostrará "servicio de 
 7. Hosting HTTPS para `server/api/` y credenciales del servidor (fuera del repositorio).
 8. Modelos de TV Box / celulares de prueba.
 9. Firma de producción (keystore en GitHub Secrets) — la fase actual solo genera APK de depuración.
+
+
+## Actualización visual y de reproducción (v1.1)
+
+Esta revisión incorpora una interfaz de reproducción con estética de decodificador, OSD inferior, barra superior de marca y ayudas de control remoto. También actualiza Media3 a 1.4.1 y ajusta el búfer para televisión en vivo.
+
+**Antes de compilar para producción:** agrega las listas autorizadas `m3u_plan_50.m3u`, `m3u_plan_80.m3u` y `m3u_plan_120.m3u` en `app/src/main/assets/`. El ZIP recibido no incluía esos archivos; sin ellos no aparecerán canales. Configura además la URL y clave pública reales del servicio de licencias. Consulta `REVISION_TECNICA.md`.
