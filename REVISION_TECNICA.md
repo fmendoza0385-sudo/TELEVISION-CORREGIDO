@@ -19,3 +19,12 @@
 - Cambio de canal con CH+/CH−, deslizamiento y teclado numérico.
 - Reproducción HLS/M3U8 y flujo progresivo MPEG-TS.
 - Reintentos de reproducción, manejo de ventana en vivo y bloqueo si la suscripción deja de estar autorizada.
+
+
+## Corrección de compilación — v1.3 (15-11-2026)
+
+- Se conserva una sola definición de los modelos LUKKA en `LukkaConfig.kt`.
+- Se excluye el archivo obsoleto oculto `.LukkaConfig.kt`, que duplicaba las clases `LukkaConfig`, `OfflinePolicy`, `LukkaPlan`, `LukkaUser` y `ActivationCode`.
+- `LukkaAuthManager.kt` queda alineado con el JSON vigente (`monthly_codes`, `activation_code`, `status`, `plan_id` y `plan_name`) y comprueba de forma segura los campos opcionales.
+- No se modifican el reproductor IPTV, la reproducción M3U8/HLS/MPEG-TS, el cambio de canales ni las reglas de suscripción.
+- La corrección se verificó revisando la estructura del ZIP y la correspondencia de los modelos con el JSON. La compilación Android debe confirmarse ejecutando el workflow de GitHub Actions.
